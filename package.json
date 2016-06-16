@@ -1,0 +1,19 @@
+{
+  "name": "object-is-change",
+  "version": "1.0.0",
+  "description": "对象是否发生变化",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/musicode/object-is-change.git"
+  },
+  "author": "musicode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/musicode/object-is-change/issues"
+  },
+  "homepage": "https://github.com/musicode/object-is-change#readme"
+}
