@@ -3,7 +3,14 @@ function isObject(obj) {
     return obj && typeof obj === 'object';
 }
 
-function isObjectChange(object1, object2, recursive) {
+var level;
+var maxLevel;
+
+function isObjectChange(object1, object2) {
+    level++;
+    if (level > maxLevel) {
+        return true;
+    }
     var aKeys = Object.keys(object1).sort();
     var bKeys = Object.keys(object2).sort();
     if (isArrayChange(aKeys, bKeys)) {
@@ -11,6 +18,7 @@ function isObjectChange(object1, object2, recursive) {
     }
     return aKeys.some(
         function (key) {
+
             var aValue = object1[key];
             var bValue = object2[key];
 
@@ -20,7 +28,7 @@ function isObjectChange(object1, object2, recursive) {
             if (Array.isArray(aValue) && Array.isArray(bValue)) {
                 return isArrayChange(aValue, bValue);
             }
-            else if (recursive && isObject(aValue) && isObject(bValue)) {
+            else if (isObject(aValue) && isObject(bValue)) {
                 return isObjectChange(aValue, bValue);
             }
 
@@ -40,16 +48,18 @@ function isArrayChange(array1, array2){
     );
 }
 
-export default function objectIsChange(newObject, oldObject) {
+export default function objectIsChange(newObject, oldObject, max = 3) {
 
     if (newObject === oldObject) {
-      return false;
+        return false;
     }
 
     if (!isObject(newObject) || !isObject(oldObject)) {
         return true;
     }
 
-    return isObjectChange(newObject, oldObject, true);
+    level = 0;
+    maxLevel = max;
+    return isObjectChange(newObject, oldObject);
 
 }

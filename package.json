@@ -1,6 +1,6 @@
 {
   "name": "object-is-change",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "对象是否发生变化",
   "main": "index.js",
   "scripts": {
